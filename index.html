@@ -3,14 +3,15 @@
 <head>
     <title> Intranet Documentation </title>
     <meta charset="utf-8">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/code.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/code.css" rel="stylesheet">
 </head>
 
 <body id="body">
@@ -21,12 +22,13 @@
         <ul class="nav">
             <li><a class="scroll" href="#main-header">Introduction</a></li>
             <li><a class="scroll" href="#gettingstarted">Getting started</a></li>
+            <li><a class="scroll" href="#hardware">Hardware</a></li>
         </ul>
     </div>
     <div id="container">
         <div id="main-header">
             <!-- Badge Colors currently are: green (stable), blue(development) red(broken) orange(unstable) -->
-            <h1>Intranet Documentation <sup><badge class="blue">0.0.8</badge></sup></h1>
+            <h1>Intranet Documentation <sup><badge class="blue version">0.0.12</badge></sup></h1>
             <p>This is the only official Documentation for the Intranet Project. You can check each version by simply adding the version number in the URL. For Example: <b>/v/0.0.1/</b> There you can find the changelog for each version, too.</p>
             <p>This documentation will show you how to get started with the basic setup and what is important where you have to watch out during setup.</p>
         </div>
@@ -39,8 +41,14 @@
                 <p><b>So to keep it short:</b> The first digit is the official release, where we can say that everything works fine. The second is the Beta. Here we don't exactly know if everything is working correctly, so we are testing it first. And the third one is basically just interesting if you're a developer yourself.</p>
             </section>
             <hr style="width: 100%">
-            <section id="changelog">
-                <h2>Changelog:</h2>
+            <section id="hardware">
+                <h2>Hardware</h2>
+                <p>You need a webserver to run the Intranet on it. So therefore you need a small computer or a virtuelle maschine on your PC that is always powered on when you need your Intranet. We developed the Project with the <b>RaspberryPi</b> as a Webserver in mind. In the following steps we will show you how to setup your Pi. We won't go over the hardware part, since there are a lot of good tutorials out there. <b>What Operating System do I need?</b> It really doesn't matter what you are using, but in our Tutorial we'll show you how to configure Rasbian, a Debian version for the Raspberry. As long as you have access to the console, you should be allright. <b>You can install more than the Intranet on the Pi! It is NOT fully occupied by it.</b></p>
+                <h3>So let's hop right in:</h3>
+                <p>You now should have a running Pi with console access. So let's start installing some software. But wait. If you want to skip this process, you can let our <a href="#">installation script</a> do it.</p>
+                <p>If you want to use it, we'll show you now how you can start it. Basiclly after that, you are good to go. You just have to run a basic command in the command line:</p>
+                <pre class="prettyprint linenums">
+get http://IntranetProject.net/setup/script/script.sh</pre>
             </section>
         </div>
         <div id="footer">
@@ -62,7 +70,7 @@
                     <li><a target="_blank" href="https://www.github.com/bennetgallein">GitHub</a></li>
                 </ul>
                 <div class="notice">
-                    <p> &lt;&gt; with &hearts; by <a href="https://github.com/bennetgallein"> BennetG </a>
+                    <p><b> &lt;&gt; </b>with <i style="color: red;">&hearts;</i> by <a href="https://IntranetProject.net/"> Intranet Project </a>
                 </div>
                 <a href="#" class="go-top">Top</a>
             </div>
