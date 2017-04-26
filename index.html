@@ -23,13 +23,14 @@
             <li><a class="scroll" href="#main-header">Introduction</a></li>
             <li><a class="scroll" href="#gettingstarted">Getting started</a></li>
             <li><a class="scroll" href="#hardware">Hardware</a></li>
+            <li><a class="scroll" href="#hostname">Hostname</a></li>
         </ul>
     </div>
     <div id="container">
         <div id="main-header">
             <!-- Badge Colors currently are: green (stable), blue(development) red(broken) orange(unstable) -->
             <h1>Intranet Documentation <sup><badge class="blue version">0.1.0</badge></sup></h1>
-            <p>This is the only official Documentation for the Intranet Project. You can check each version by simply adding the version number in the URL. For Example: <b>/v/0.0.1/</b> There you can find the changelog for each version, too.</p>
+            <p>This is the only official Documentation for the Intranet Project. You can check each version by simply adding the version number in the URL (only works for betas and releases). For Example: <b>/v/0.1.0/</b> There you can find the changelog for each version, too.</p>
             <p>This documentation will show you how to get started with the basic setup and what is important where you have to watch out during setup.</p>
         </div>
         <div class="documentation">
@@ -46,35 +47,27 @@
                 <p>You need a webserver to run the Intranet on it. So therefore you need a small computer or a virtuelle maschine on your PC that is always powered on when you need your Intranet. We developed the Project with the <b>RaspberryPi</b> as a Webserver in mind. In the following steps we will show you how to setup your Pi. We won't go over the hardware part, since there are a lot of good tutorials out there. <b>What Operating System do I need?</b> It really doesn't matter what you are using, but in our Tutorial we'll show you how to configure Rasbian, a Debian version for the Raspberry. As long as you have access to the console, you should be allright. <b>You can install more than the Intranet on the Pi! It is NOT fully occupied by it.</b></p>
                 <h3>So let's hop right in:</h3>
                 <p>You now should have a running Pi with console access. So let's start installing some software. But wait. If you want to skip this process, you can let our <a href="#">installation script</a> do it.</p>
-                <p>If you want to use it, we'll show you now how you can start it. Basiclly after that, you are good to go. You just have to run a basic command in the command line:</p>
+                <p>If you want to use it, we'll show you now how you can start it. Basiclly after that, you are good to go. You just have to run a basic command in the command line and follow the instructions:</p>
                 <pre class="prettyprint linenums">
 get http://IntranetProject.net/setup/script/script.sh</pre>
                 <p>And that's all you need to do. Now you can enter the URL of your Pi in your Browsers URL-Bar and let the Database Setup script run everything. Click <a href="#hostname">here</a> if you want to know how to change the <b>hostname</b> of your Pi (different name in Network)</p>
             </section>
-        </div>
-        <div id="footer">
-            <div class="social">
-                <ul class="social-links">
-                    <li><a target="_blank" href="https://wwww.twitter.com/scorpiaweb">Twitter</a></li>
-                    <li><a target="_blank" href="https://wwww.github.com/bennetgallein">GitHub</a></li>
-                </ul>
-            </div>
-            <div class="info">
-                <ul class="info-links">
-                    <li><a target="_blank" href="https://www.twitter.com/scorpiaweb">Twitter </a></li>
-                    <li><a target="_blank" href="https://www.github.com/bennetgallein">GitHub</a></li>
-                </ul>
-            </div>
-            <div class="additional-info">
-                <ul class="additional-info-links">
-                    <li><a target="_blank" href="https://www.twitter.com/scorpiaweb">Twitter </a></li>
-                    <li><a target="_blank" href="https://www.github.com/bennetgallein">GitHub</a></li>
-                </ul>
-                <div class="notice">
-                    <p><b> &lt;&gt; </b>with <i style="color: red;">&hearts;</i> by <a href="https://IntranetProject.net/"> Intranet Project </a>
-                </div>
-                <a href="#" class="go-top">Top</a>
-            </div>
+            <hr style="width: 100%;">
+            <section id="hostname">
+                <h2>Change Hostname</h2>
+                <p>Since your Router has a DNS Server build in, you can change the IP Adress of your Pi to a static name. It's pretty simple.</p>
+                <pre class="prettyprint linenums">
+sudo nano /etc/hosts</pre>
+                <p>The file will look something like this:</p>
+                <img src="img/pi_host.png" />
+                <p>You only need to change the last line: Replace "raspberrypi" with the name you want your Pi to be shown in the Network. Use <b>CTRL + X</b> to exit the editor.</p>
+                <p>After that, open the file hostname:</p>
+                <pre class="prettyprint linenums">
+sudo nano /etc/hostname</pre>
+                <p>Again, change "raspberrypi" to your desired name. It should be the same as in the <b>/etc/hosts</b> file.</p>
+                <p>Now, you are ready to restart the Pi. Commit the changes to the system by typing <b>sudo /etc/init.d/hostname.sh</b> and after that <b>sudo reboot</b> in your console.</p>
+                <p>Back online, you should see (and access) the Pi over the name, you just set. If it doesn't work, check on your Routers Interface if the name was applied.</p>
+            </section>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
