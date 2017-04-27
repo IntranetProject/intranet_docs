@@ -23,6 +23,7 @@
             <li><a class="scroll" href="#main-header">Introduction</a></li>
             <li><a class="scroll" href="#gettingstarted">Getting started</a></li>
             <li><a class="scroll" href="#hardware">Hardware</a></li>
+            <li><a class="scroll" href="#software">Software </a></li>
             <li><a class="scroll" href="#hostname">Hostname</a></li>
         </ul>
     </div>
@@ -51,6 +52,18 @@
                 <pre class="prettyprint linenums">
 get http://IntranetProject.net/setup/script/script.sh</pre>
                 <p>And that's all you need to do. Now you can enter the URL of your Pi in your Browsers URL-Bar and let the Database Setup script run everything. Click <a href="#hostname">here</a> if you want to know how to change the <b>hostname</b> of your Pi (different name in Network)</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="software">
+                <h2>Software</h2>
+                <p>If you have your Hardware Setup and all the needed packages installed, you can start configuring your Intranet. Therefore you need to edit the following file: <b>php/config.php</b>. If you don't have visuell acces to your Pi (Remote Desktop) and only SSH connection, you can use "nano" to edit the files. Just type the following in your console and edit your configuration:</p>
+                <pre class="prettyprint linumuns">
+sudo nano /var/www/html/php/config.php</pre>
+                <p>edit the lines you want: If you want to change the language, edit the line for that. <b>Important!</b> You want to have a Database allready created! If you don't have that done, follow here:</p>
+                <h2>Create the Database:</h2>
+                <p>In your Browser, type <b>"&#60;hostname&#62;/phpmyadmin"</b>. Login with your credentials and you should be welcomed with this screen:</p>
+                <img style="width: 50%;" src="img/phpmyadmin_interface.png" />
+                <p>In the left Navbar click on "New" and create a new Database. Now you can go back to your config.php and insert the MySQL Data. After that visit the Pi in your Browser and let the setup script set the tables up.</p>
             </section>
             <hr style="width: 100%;">
             <section id="hostname">
