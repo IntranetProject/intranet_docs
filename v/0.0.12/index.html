@@ -27,7 +27,9 @@
             <li><a class="scroll" href="#ftp">FTP</a></li>
             <li><a class="scroll" href="#ssh">SSH</a></li>
             <li><a class="scroll" href="#hostname">Hostname</a></li>
+            <li><a class="scroll" href="#modules">Modules</a></li>
             <li><a class="scroll" href="#manualinstallation">Manual Installation</a></li>
+            <li><a class="scroll" href="#developers">Developers</a></li>
         </ul>
     </div>
     <div id="container">
@@ -68,6 +70,9 @@ sudo nano /var/www/html/php/config.php</pre>
                 <p>In your Browser, type <b>"&#60;hostname&#62;/phpmyadmin"</b>. Login with your credentials and you should be welcomed with this screen:</p>
                 <img style="width: 50%;" src="img/phpmyadmin_interface.png" />
                 <p>In the left Navbar click on "New" and create a new Database. Now you can go back to your config.php and insert the MySQL Data. After that visit the Pi in your Browser and let the setup script set the tables up.</p>
+                <p>After that you can reload the page and should be greeted with a login-page. Enter the standard user-information (user: root, password: root).<br><b>Important:</b> If you want a quick login, you can add a bookmark to your Browser with the following URL structure:</p>
+                <pre class="prettyprint linenums">
+http://&lt;device&gt;/php/login.php?login=&lt;user&gt;&amp;password=&lt;pw&gt;</pre>
             </section>
             <hr style="width: 100%">
             <section id="ftp">
@@ -102,6 +107,12 @@ sudo nano /etc/hostname</pre>
                 <p>Back online, you should see (and access) the Pi over the name, you just set. If it doesn't work, check on your Routers Interface if the name was applied.</p>
             </section>
             <hr style="width: 100%">
+            <section id="modules">
+                <h2>Modules</h2>
+                <p>In our Project, it's alle about the modules. The Barebone Intranet is only good for Usermanagment. So the modules are the important parts. Developed by us and the community, you can customize your Intranet perfectly to fit <b>your</b> needs. Installing modules is fairly easy. You have a Folder which you can access via <a href="#ftp">FTP</a>. The Folder is called <b>/Interface/modules</b>. In there, you drop your module. If the module you've downloaded has a "php" folder with a "interface_xxx.php", drop it in the existing "php" folder. Then you should be good to go. We planned to add an installer to make it even easier for you. Any file with "interface_xxx.php" have content that will be shown on your Dashboard. </p>
+
+            </section>
+            <hr style="width: 100%">
             <section id="manualinstallation">
                 <h2>Manual Installation</h2>
                 <p>If you don't strust our script (you can check the source <a href="https://github.com/IntranetProject/intranet_page/blob/master/setup/script/script.sh">here</a>), you can run each step by yourself. To guide you through this process, we collected all commands here.</p>
@@ -116,6 +127,87 @@ apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
 apt-get install php5-mysql
 apt-get install mysql-server mysql-client</pre>
                 <p>During the process you'll be asked to give a password. You need to remember that. Now, that everything is installed correctly we can continue by putting our main Intranet in the folder of the apache Webserver. Connect of <a href="#ftp">FTP</a> to your Pi and download the version you want from our <a href="https://github.com/IntranetProject/intranet_frontend/releases">GitHub Release Page</a>. Navigate to the <b>/var/www/</b> folder and delete the html folder. Unzip the downloaded package and rename the folder to "html". Now you can move it onto your Pi.</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="developers">
+                <h2>Developer:</h2>
+                <p>You want to develop your own module? No worrys, we'll guide you through this.</p>
+                <p>But what requirements do you need? It's good if you have some PHP knowledge, but it's not required. You can go with a fully JavaScript module, but for Database connection, it's good to have some PHP knowledge.</p>
+                <p>Now let's have a look at the important part of the Template.php, which you can find in the "Interface/modules" folder. There are only 2 important lines, you should know about. Line 1 and line 100. In line 100 you paste your code. The structur around are mainly things as the navbar and imports. In line 1, you'll find this:</p>
+                <pre class="prettyprint linenums">
+&lt;?php include 'php/basics.php'; ?&gt;</pre>
+                <p>As you can probably tell, there is a file getting imported. Now let's have a look at that file, you can find it in the "Interface/modules/php" folder.</p>
+                <pre class="prettyprint linenums">
+&lt;?php
+
+session_start();
+
+include_once '../../php/config.php';
+if (($_SESSION['login'])) {
+
+} else {
+  header(&quot;Location: &quot; . $network_path);
+}
+
+?&gt;</pre>
+                <p>Notice, we're importing the config.php and starting a session to check if the user is logged in or not (if he has access or not).</p>
+                <p>Now that's basicly all you need to know if you want to get started. But we'll give you some more information that could be helpful.</p>
+                <h4>Variables:</h4>
+                <p>There are some useful information about the logged-in user in the session variables and normal PHP vars. Those should never be overwritten!</p>
+                <table>
+                    <tr>
+                        <th>Variable Name</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['rank']</td>
+                        <td>returns the rank of the user (user, admin)</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['loginname']</td>
+                        <td>returns the loginname of the user, that is also the primary key in the database, so it cannot be duplicated!</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['name']</td>
+                        <td>returns the name of the user</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['img_url']</td>
+                        <td>returns the url where the profile img is located.</td>
+                    </tr>
+                    <tr>
+                        <th>Variable Name</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>$version</td>
+                        <td>returns the current version the Intranet is running on.</td>
+                    </tr>
+                    <tr>
+                        <td>$network_path</td>
+                        <td>returns the path where the Intranet is located, inclusive Network device.</td>
+                    </tr>
+                    <tr>
+                        <td>$language</td>
+                        <td>returns the language that is selected.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_host</td>
+                        <td>returns the host where the database is located.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_user</td>
+                        <td>returns the mysql user.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_password</td>
+                        <td>returns the mysql password for the user.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database</td>
+                        <td>returns the database which is selected.</td>
+                    </tr>
+                </table>
             </section>
         </div>
     </div>
