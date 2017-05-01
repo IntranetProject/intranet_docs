@@ -29,7 +29,9 @@
             <li><a class="scroll" href="#hostname">Hostname</a></li>
             <li><a class="scroll" href="#modules">Modules</a></li>
             <li><a class="scroll" href="#manualinstallation">Manual Installation</a></li>
-            <li><a class="scroll" href="#developers">Developers</a></li>
+            <li><a class="scroll" href="#developers">Developer</a></li>
+            <li class="small"><a class="scroll" href="#variables">Variables</a></li>
+            <li class="small"><a class="scroll" href="#restapi">REST API</a></li>
         </ul>
     </div>
     <div id="container">
@@ -152,7 +154,7 @@ if (($_SESSION['login'])) {
 ?&gt;</pre>
                 <p>Notice, we're importing the config.php and starting a session to check if the user is logged in or not (if he has access or not).</p>
                 <p>Now that's basicly all you need to know if you want to get started. But we'll give you some more information that could be helpful.</p>
-                <h4>Variables:</h4>
+                <h4 id="#variables">Variables:</h4>
                 <p>There are some useful information about the logged-in user in the session variables and normal PHP vars. Those should never be overwritten!</p>
                 <table>
                     <tr>
@@ -206,6 +208,55 @@ if (($_SESSION['login'])) {
                     <tr>
                         <td>$__database</td>
                         <td>returns the database which is selected.</td>
+                    </tr>
+                </table>
+                <h4 id="#restapi">REST API</h4>
+                <p>The Intranet has a native REST API implementet. Here, you'll learn how to use it and how to filter information with native JavaScript.</p>
+                <p>The important file is in the /php/REST/index.php folder. If you want to send a GET request to get information about any user in the database, there are differente ways to acomplish you goal. </p>
+                <table>
+                    <tr>
+                        <td><b>Title</b></td>
+                        <td>Show User Information</td>
+                    </tr>
+                    <tr>
+                        <td><b>URL</b></td>
+                        <td>/php/rest/?:id <b>or</b> /php/rest/?:name <b>or</b> /php/rest/?:all</td>
+                    </tr>
+                    <tr>
+                        <td><b>Method</b></td>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <td><b>URL Parameter</b></td>
+                        <td>id=[integer]<br>example: id=12<br><br>name=[string]<br>example: name=root<br><br>all=[null]<br>example: all=1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Success Response</b></td>
+                        <td>Code: 200<br><br>Content:<pre class="prettyprint linenums">{
+  "id": "1",
+  "login": "root",
+  "password": "63a9f0ea7bb98050796b649e85481845",
+  "name": "root",
+  "img_url": "img/root.png",
+  "rank": "admin"
+}</pre></td>
+                    </tr>
+                    <tr>
+                        <td><b>Error Response</b></td>
+                        <td>Code: 200<br><br>Content:<pre class="prettyprint linenums">"Error 404. User with id 2 not found!"</pre></td>
+                    </tr>
+                    <tr>
+                        <td><b>Sample Call</b></td>
+                        <td>Here is an example call with JavaScript and ajax to show you how to use it:<br><br><pre class="prettyprint linenums">$.ajax({
+    url: "/php/rest/index.php",
+    data: {"all": "1"},
+    success: function(response) {
+        //Do Something
+    },
+    error: function(xhr) {
+        //Do Something to handle error
+    }
+});</pre></td>
                     </tr>
                 </table>
             </section>
