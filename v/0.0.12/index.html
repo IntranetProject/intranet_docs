@@ -44,7 +44,7 @@
         <div class="documentation">
             <section id="gettingstarted">
                 <h2>So let's get started!</h2>
-                <p>There are some things you want to pay attention to. First let's clear out how out version system works: <b>e.g. v0.0.4</b> This is an alpha release. We tend to keep up the repository up to date, as good as possible to clear out and issues with merging. In the alpha release we do not guarantee any functionality or support for any versions. If we take for example our version v0.0.2, you can see that the whole PHP/MySQL part is coded with the mysql extensions for PHP. That is no longer supported in PHP6, so our scripts won't work on the following PHP versions. In v.0.0.8 we started moving towards MySQLi, which will stay supported at least for the next PHP version.</p>
+                <p>There are some things you want to pay attention to. First let's clear out how out version system works: <b>e.g. v0.0.4</b> This is an alpha release. We tend to keep up the repository up to date, as good as possible to clear out and issues with merging. In the alpha release we do not guarantee any functionality or support for any versions. If we take for example our version v0.0.2, you can see that the whole PHP/MySQL part is coded with the MySQL extensions for PHP. That is no longer supported in PHP6, so our scripts won't work on the following PHP versions. In v.0.0.8 we started moving towards MySQLi, which will stay supported at least for the next PHP version.</p>
                 <p>Let's take another version number: <b>v0.1.2</b>. All that means is that we got is the fact, that the last Beta release is two alphas away. If you want to be sure about your version support, then you should use one of the releases. If you do not care that much and believe, that the Beta builds are good enough, then you can go with those.</p>
                 <p>And we got another version format to check out: <b>v1.4.32</b>. That is pretty simple as well. That basically means, that we are 4 Betas and 32 Alphas past the last release. In a release we tested and experienced the features so we can guarantee maximum safety and reliability.</p>
                 <p><b>So to keep it short:</b> The first digit is the official release, where we can say that everything works fine. The second is the Beta. Here we don't exactly know if everything is working correctly, so we are testing it first. And the third one is basically just interesting if you're a developer yourself.</p>
@@ -52,10 +52,10 @@
             <hr style="width: 100%">
             <section id="hardware">
                 <h2>Hardware</h2>
-                <p>You need a webserver to run the Intranet on it. So therefore you need a small computer or a virtuelle maschine on your PC that is always powered on when you need your Intranet. We developed the Project with the <b>RaspberryPi</b> as a Webserver in mind. In the following steps we will show you how to setup your Pi. We won't go over the hardware part, since there are a lot of good tutorials out there. <b>What Operating System do I need?</b> It really doesn't matter what you are using, but in our Tutorial we'll show you how to configure Rasbian, a Debian version for the Raspberry. As long as you have access to the console, you should be allright. <b>You can install more than the Intranet on the Pi! It is NOT fully occupied by it.</b></p>
+                <p>You need a webserver to run the Intranet on it. So therefore you need a small computer or a virtual machine on your PC that is always powered on when you need your Intranet. We developed the Project with the <b>RaspberryPi</b> as a Webserver in mind. In the following steps we will show you how to setup your Pi. We won't go over the hardware part, since there are a lot of good tutorials out there. <b>What Operating System do I need?</b> It really doesn't matter what you are using, but in our Tutorial we'll show you how to configure Rasbian, a Debian version for the Raspberry. As long as you have access to the console, you should be alright. <b>You can install more than the Intranet on the Pi! It is NOT fully occupied by it.</b></p>
                 <h3>So let's hop right in:</h3>
                 <p>You now should have a running Pi with console access. So let's start installing some software. But wait. If you want to skip this process, you can let our <a href="#">installation script</a> do it.</p>
-                <p>If you want to use it, we'll show you now how you can start it. Basiclly after that, you are good to go. You just have to run a basic command in the command line and follow the instructions:</p>
+                <p>If you want to use it, we'll show you now how you can start it. Basically after that, you are good to go. You just have to run a basic command in the command line and follow the instructions:</p>
                 <pre class="prettyprint linenums">
 get http://IntranetProject.net/setup/script/script.sh</pre>
                 <p>And that's all you need to do. Now you can enter the URL of your Pi in your Browsers URL-Bar and let the Database Setup script run everything. Click <a href="#hostname">here</a> if you want to know how to change the <b>hostname</b> of your Pi (different name in Network)</p>
@@ -64,10 +64,10 @@ get http://IntranetProject.net/setup/script/script.sh</pre>
             <hr style="width: 100%">
             <section id="software">
                 <h2>Software</h2>
-                <p>If you have your Hardware Setup and all the needed packages installed, you can start configuring your Intranet. Therefore you need to edit the following file: <b>php/config.php</b>. If you don't have visuell acces to your Pi (Remote Desktop) and only SSH connection, you can use "nano" to edit the files. Just type the following in your console and edit your configuration:</p>
+                <p>If you have your Hardware Setup and all the needed packages installed, you can start configuring your Intranet. Therefore you need to edit the following file: <b>php/config.php</b>. If you don't have visual access to your Pi (Remote Desktop) and only SSH connection, you can use "nano" to edit the files. Just type the following in your console and edit your configuration:</p>
                 <pre class="prettyprint linumuns">
 sudo nano /var/www/html/php/config.php</pre>
-                <p>edit the lines you want: If you want to change the language, edit the line for that. <b>Important!</b> You want to have a Database allready created! If you don't have that done, follow here:</p>
+                <p>edit the lines you want: If you want to change the language, edit the line for that. <b>Important!</b> You want to have a Database already created! If you don't have that done, follow here:</p>
                 <h2>Create the Database:</h2>
                 <p>In your Browser, type <b>"&#60;hostname&#62;/phpmyadmin"</b>. Login with your credentials and you should be welcomed with this screen:</p>
                 <img style="width: 50%;" src="img/phpmyadmin_interface.png" />
@@ -79,7 +79,7 @@ http://&lt;device&gt;/php/login.php?login=&lt;user&gt;&amp;password=&lt;pw&gt;</
             <hr style="width: 100%">
             <section id="ftp">
                 <h2>FTP</h2>
-                <p>You can use the FTP Protocol to access your Pi via a FTP Client. You can use <a target="_blank" href="https://filezilla-project.org/">FilleZilla</a> or <a target="_blank" href="https://winscp.net/eng/index.php">WinSCP</a> to connect to your Pi. In the following, we'll use WinSCP since it has a build in edit funtion. Start the Programm and enter the Username "pi" and your password (If you didn't change it, it'll be "raspberry").</p>
+                <p>You can use the FTP Protocol to access your Pi via a FTP Client. You can use <a target="_blank" href="https://filezilla-project.org/">FilleZilla</a> or <a target="_blank" href="https://winscp.net/eng/index.php">WinSCP</a> to connect to your Pi. In the following, we'll use WinSCP since it has a built-in edit function. Start the program and enter the Username "pi" and your password (If you didn't change it, it'll be "raspberry").</p>
                 <img src="img/winscp_login.png" />
                 <p>Navigate to the folder where your Intranet is stored. By default it's in the <b>/var/www/html</b> folder. Now you can open and edit all important files. This is going to be very nice to have, if you want to install new modules.</p>
             </section>
@@ -90,12 +90,12 @@ http://&lt;device&gt;/php/login.php?login=&lt;user&gt;&amp;password=&lt;pw&gt;</
                 <img src="img/putty_sett.png" />
                 <p>Now, enter "pi" as the user and enter your Password (default password is "raspberry" (you won't be able to see it, while typing)):</p>
                 <img src="img/putty_conn.png" />
-                <p><b>Important:</b> If you cannot connect immediately, you have to connect to your Pi with a Monitor and Mouse and Keyboard. Login and open up the Terminal. Enter: <b>sudo raspi-config" and search for the option "ssh" and be sure it is actived.</b></p>
+                <p><b>Important:</b> If you cannot connect immediately, you have to connect to your Pi with a Monitor and Mouse and Keyboard. Login and open up the Terminal. Enter: <b>sudo raspi-config" and search for the option "ssh" and be sure it is active.</b></p>
             </section>
             <hr style="width: 100%">
             <section id="hostname">
                 <h2>Change Hostname</h2>
-                <p>Since your Router has a DNS Server build in, you can change the IP Adress of your Pi to a static name. It's pretty simple.</p>
+                <p>Since your Router has a DNS Server build in, you can change the IP Address of your Pi to a static name. It's pretty simple.</p>
                 <pre class="prettyprint linenums">
 sudo nano /etc/hosts</pre>
                 <p>The file will look something like this:</p>
@@ -111,13 +111,13 @@ sudo nano /etc/hostname</pre>
             <hr style="width: 100%">
             <section id="modules">
                 <h2>Modules</h2>
-                <p>In our Project, it's alle about the modules. The Barebone Intranet is only good for Usermanagment. So the modules are the important parts. Developed by us and the community, you can customize your Intranet perfectly to fit <b>your</b> needs. Installing modules is fairly easy. You have a Folder which you can access via <a href="#ftp">FTP</a>. The Folder is called <b>/Interface/modules</b>. In there, you drop your module. If the module you've downloaded has a "php" folder with a "interface_xxx.php", drop it in the existing "php" folder. Then you should be good to go. We planned to add an installer to make it even easier for you. Any file with "interface_xxx.php" have content that will be shown on your Dashboard. </p>
+                <p>In our Project, it's all about the modules. The Barebone Intranet is only good for Usermanagment. So the modules are the important parts. Developed by us and the community, you can customize your Intranet perfectly to fit <b>your</b> needs. Installing modules is fairly easy. You have a Folder which you can access via <a href="#ftp">FTP</a>. The Folder is called <b>/Interface/modules</b>. In there, you drop your module. If the module you've downloaded has a "php" folder with an "interface_xxx.php", drop it in the existing "php" folder. Then you should be good to go. We planned to add an installer to make it even easier for you. Any file with "interface_xxx.php" have content that will be shown on your Dashboard. </p>
 
             </section>
             <hr style="width: 100%">
             <section id="manualinstallation">
                 <h2>Manual Installation</h2>
-                <p>If you don't strust our script (you can check the source <a href="https://github.com/IntranetProject/intranet_page/blob/master/setup/script/script.sh">here</a>), you can run each step by yourself. To guide you through this process, we collected all commands here.</p>
+                <p>If you don't trust our script (you can check the source <a href="https://github.com/IntranetProject/intranet_page/blob/master/setup/script/script.sh">here</a>), you can run each step by yourself. To guide you through this process, we collected all commands here.</p>
                 <p>Start by updating and upgrading your Pi's software with the following two commands:</p>
                 <pre class="prettyprint linenums">
 apt-get update
@@ -133,9 +133,9 @@ apt-get install mysql-server mysql-client</pre>
             <hr style="width: 100%">
             <section id="developers">
                 <h2>Developer:</h2>
-                <p>You want to develop your own module? No worrys, we'll guide you through this.</p>
+                <p>You want to develop your own module? No worries, we'll guide you through this.</p>
                 <p>But what requirements do you need? It's good if you have some PHP knowledge, but it's not required. You can go with a fully JavaScript module, but for Database connection, it's good to have some PHP knowledge.</p>
-                <p>Now let's have a look at the important part of the Template.php, which you can find in the "Interface/modules" folder. There are only 2 important lines, you should know about. Line 1 and line 100. In line 100 you paste your code. The structur around are mainly things as the navbar and imports. In line 1, you'll find this:</p>
+                <p>Now let's have a look at the important part of the Template.php, which you can find in the "Interface/modules" folder. There are only 2 important lines, you should know about. Line 1 and line 100. In line 100 you paste your code. The structure around are mainly things as the navbar and imports. In line 1, you'll find this:</p>
                 <pre class="prettyprint linenums">
 &lt;?php include 'php/basics.php'; ?&gt;</pre>
                 <p>As you can probably tell, there is a file getting imported. Now let's have a look at that file, you can find it in the "Interface/modules/php" folder.</p>
@@ -153,7 +153,7 @@ if (($_SESSION['login'])) {
 
 ?&gt;</pre>
                 <p>Notice, we're importing the config.php and starting a session to check if the user is logged in or not (if he has access or not).</p>
-                <p>Now that's basicly all you need to know if you want to get started. But we'll give you some more information that could be helpful.</p>
+                <p>Now that's basically all you need to know if you want to get started. But we'll give you some more information that could be helpful.</p>
                 <h4 id="#variables">Variables:</h4>
                 <p>There are some useful information about the logged-in user in the session variables and normal PHP vars. Those should never be overwritten!</p>
                 <table>
@@ -167,7 +167,7 @@ if (($_SESSION['login'])) {
                     </tr>
                     <tr>
                         <td>$_SESSION['loginname']</td>
-                        <td>returns the loginname of the user, that is also the primary key in the database, so it cannot be duplicated!</td>
+                        <td>returns the login name of the user, which is also the primary key in the database, so it cannot be duplicated!</td>
                     </tr>
                     <tr>
                         <td>$_SESSION['name']</td>
@@ -199,11 +199,11 @@ if (($_SESSION['login'])) {
                     </tr>
                     <tr>
                         <td>$__database_user</td>
-                        <td>returns the mysql user.</td>
+                        <td>returns the MySQL user.</td>
                     </tr>
                     <tr>
                         <td>$__database_password</td>
-                        <td>returns the mysql password for the user.</td>
+                        <td>returns the MySQL password for the user.</td>
                     </tr>
                     <tr>
                         <td>$__database</td>
@@ -211,8 +211,8 @@ if (($_SESSION['login'])) {
                     </tr>
                 </table>
                 <h4 id="#restapi">REST API</h4>
-                <p>The Intranet has a native REST API implementet. Here, you'll learn how to use it and how to filter information with native JavaScript.</p>
-                <p>The important file is in the /php/REST/index.php folder. If you want to send a GET request to get information about any user in the database, there are differente ways to acomplish you goal. </p>
+                <p>The Intranet has a native REST API implemented. Here, you'll learn how to use it and how to filter information with native JavaScript.</p>
+                <p>The important file is in the /php/REST/index.php folder. If you want to send a GET request to get information about any user in the database, there are different ways to accomplish your goal. </p>
                 <table>
                     <tr>
                         <td><b>Title</b></td>
@@ -232,22 +232,27 @@ if (($_SESSION['login'])) {
                     </tr>
                     <tr>
                         <td><b>Success Response</b></td>
-                        <td>Code: 200<br><br>Content:<pre class="prettyprint linenums">{
+                        <td>Code: 200<br><br>Content:
+                            <pre class="prettyprint linenums">{
   "id": "1",
   "login": "root",
   "password": "63a9f0ea7bb98050796b649e85481845",
   "name": "root",
   "img_url": "img/root.png",
   "rank": "admin"
-}</pre></td>
+}</pre>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Error Response</b></td>
-                        <td>Code: 200<br><br>Content:<pre class="prettyprint linenums">"Error 404. User with id 2 not found!"</pre></td>
+                        <td>Code: 200<br><br>Content:
+                            <pre class="prettyprint linenums">"Error 404. User with id 2 not found!"</pre>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Sample Call</b></td>
-                        <td>Here is an example call with JavaScript and ajax to show you how to use it:<br><br><pre class="prettyprint linenums">$.ajax({
+                        <td>Here is an example call with JavaScript and ajax to show you how to use it:<br><br>
+                            <pre class="prettyprint linenums">$.ajax({
     url: "/php/rest/index.php",
     data: {"all": "1"},
     success: function(response) {
@@ -256,7 +261,9 @@ if (($_SESSION['login'])) {
     error: function(xhr) {
         //Do Something to handle error
     }
-});</pre></td>
+});</pre>
+                        </td>
+
                     </tr>
                 </table>
             </section>
