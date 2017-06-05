@@ -1,0 +1,295 @@
+<html>
+
+<head>
+    <title> Intranet Documentation </title>
+    <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/code.css" rel="stylesheet">
+</head>
+
+<body id="body">
+    <div id="sidebar">
+        <div class="sidebar-logo">
+            <img class="sidebar-logo-img" src="img/logo-sidebar.png">
+        </div>
+        <ul class="nav">
+            <li><a class="scroll" href="#main-header">Introduction</a></li>
+            <li><a class="scroll" href="#gettingstarted">Getting started</a></li>
+            <li><a class="scroll" href="#hardware">Hardware</a></li>
+            <li><a class="scroll" href="#software">Software </a></li>
+            <li><a class="scroll" href="#ftp">FTP</a></li>
+            <li><a class="scroll" href="#ssh">SSH</a></li>
+            <li><a class="scroll" href="#hostname">Hostname</a></li>
+            <li><a class="scroll" href="#stats">Stats</a></li>
+            <li><a class="scroll" href="#modules">Modules</a></li>
+            <li><a class="scroll" href="#manualinstallation">Manual Installation</a></li>
+            <li><a class="scroll" href="#developers">Developer</a></li>
+            <li class="small"><a class="scroll" href="#variables">Variables</a></li>
+            <li class="small"><a class="scroll" href="#restapi">REST API</a></li>
+        </ul>
+    </div>
+    <div id="container">
+        <div id="main-header">
+            <!-- Badge Colors currently are: green (release), orange(beta) red(alpha) -->
+            <h1>Intranet Documentation <sup><badge class="red version">0.0.20</badge></sup></h1>
+            <p>This is the only official Documentation for the Intranet Project. You can check each version by simply adding the version number in the URL (only works for betas and releases). For Example: <b>/v/0.1.0/</b> There you can find the changelog for each version, too.</p>
+            <p>This documentation will show you how to get started with the basic setup and what is important where you have to watch out during setup.</p>
+        </div>
+        <div class="documentation">
+            <section id="gettingstarted">
+                <h2>So let's get started!</h2>
+                <p>There are some things you should to pay attention to. First, let's clear out how our version system works: <b>e.g. v0.0.4</b> This is an alpha release. We tend to keep the repository up to date, as good as possible to clear out any issues with merging. In the alpha release we do not guarantee any functionality or support for any versions. Looking at our version v0.0.2, you can see that the whole PHP/MySQL part is coded with the MySQL extensions for PHP. That is no longer supported in PHP6, so our scripts won't work on the following PHP versions. In v.0.0.8 we started moving towards MySQLi, which will stay supported at least for the next PHP version.</p>
+                <p>Let's take another version number: <b>v0.1.2</b>. All that means is that the last Beta release is two alphas away. If you want to be sure about your version support, then you should use one of the releases. If you do not care that much and believe, that the Beta builds are good enough, then you can go with those.</p>
+                <p>And we got another version format to check out: <b>v1.4.32</b>. This version is pretty simple as well. It basically means, that we are 4 Betas and 32 Alphas past the last release. In a release we tested and experienced the features so that we can guarantee maximum safety and reliability.</p>
+                <p><b>To keep it short:</b> The first digit is the official release where we can say that everything works fine. The second is the Beta. Here we don't exactly know if everything is working correctly, so we are testing it first. And the third one is basically just interesting if you're a developer yourself.</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="hardware">
+                <h2>Hardware</h2>
+                <p>You need a webserver to run the Intranet on it. Therefore, you need a small computer or a virtual machine on your PC that is always powered on when you need your Intranet. We developed the Project with the <b>RaspberryPi</b> as a Webserver in mind. In the following steps we will show you how to setup your Pi. We won't inform you about the hardware, since there are a lot of good tutorials out there. <b>What Operating System do I need?</b> It really doesn't matter what you are using, but in our Tutorial we'll show you how to configure Rasbian, a Debian version for the Raspberry. As long as you have access to the console, you should be alright. <b>You can install more than the Intranet on the Pi! It is NOT fully occupied by it.</b></p>
+                <h3>So let's hop right in:</h3>
+                <p>You should now have a running Pi with console access. So let's start installing some software. But wait. If you want to skip this process, you can let our <a href="#">installation script</a> do it.</p>
+                <p>If you want to use it, we'll now show you how you can start it. After that, you are good to go. You just have to run a basic command in the command line and follow the instructions:</p>
+                <pre class="prettyprint linenums">
+bash <(curl -s http://IntranetProject.net/setup/script/script.txt)</pre>
+                <p>After that, type in the command line "nano /etc/apache2/apache.conf" and add this line to the top: "Include /etc/phpmyadmin/apache.conf".</p>
+                <p>And that's all you need to do. Now you can enter the URL of your Pi in your Browsers URL-Bar and let the Database Setup script run everything. Click <a href="#hostname">here</a> if you want to know how to change the <b>hostname</b> of your Pi (different name in Network)</p>
+                <b>Click <a href="#manualinstallation">here</a> if you want to install manually.</b>
+            </section>
+            <hr style="width: 100%">
+            <section id="software">
+                <h2>Software</h2>
+                <p>If you have your Hardware Setup and all the needed packages installed, you can start configuring your Intranet. Therefore you need to edit the following file: <b>php/config.php</b>. If you don't have visual access to your Pi (Remote Desktop) and only SSH connection, you can use "nano" to edit the files. Just type the following into your console and edit your configuration:</p>
+                <pre class="prettyprint linumuns">
+sudo nano /var/www/html/php/config.php</pre>
+                <p>edit the lines you want: If you want to change the language, edit the line for that. <b>Important!</b> You want to have a Database already created! If you haven't done it yet, follow here:</p>
+                <h2>Create the Database:</h2>
+                <p>Type <b>"&#60;hostname&#62;/phpmyadmin"</b> In your Browser. Login with your credentials and you should be welcomed with this screen:</p>
+                <img style="width: 50%;" src="img/phpmyadmin_interface.png" />
+                <p>In the left Navbar click on "New" and create a new Database. Now you can go back to your config.php and insert the MySQL Data. After that visit the Pi in your Browser and let the setup script set the tables up.</p>
+                <p>After that you can reload the page and you should be greeted with a login-page. Enter the standard user-information (user: root, password: root).<br><b>Important:</b> If you want a quick login, you can add a bookmark to your browser with the following URL structure:</p>
+                <pre class="prettyprint linenums">
+http://&lt;device&gt;/php/login.php?login=&lt;user&gt;&amp;password=&lt;pw&gt;</pre>
+            </section>
+            <hr style="width: 100%">
+            <section id="ftp">
+                <h2>FTP</h2>
+                <p>You can use the FTP Protocol to access your Pi via a FTP Client. You can use <a target="_blank" href="https://filezilla-project.org/">FilleZilla</a> or <a target="_blank" href="https://winscp.net/eng/index.php">WinSCP</a> to connect to your Pi. In the following, we'll use WinSCP since it has a built-in edit function. Start the program and enter the Username "pi" and your password (If you didn't change it, it'll be "raspberry").</p>
+                <img src="img/winscp_login.png" />
+                <p>Navigate to the folder where your Intranet is stored. By default it's in the <b>/var/www/html</b> folder. Now you can open and edit all important files. This is going to be very nice to have, if you want to install new modules.</p>
+            </section>
+            <hr style="width: 100%;">
+            <section id="ssh">
+                <h2>SSH</h2>
+                <p>If you need Console Access to your Pi, you can use SSH. In the following step you'll learn how to activate SSH and connect to it from your Pc. For that you need a software called Putty which you can download <a target="_blank" href="http://www.putty.org/">here</a>. Enter your IP and press "Enter":</p>
+                <img src="img/putty_sett.png" />
+                <p>Now, enter "pi" as the user and enter your Password (default password is "raspberry" (you won't be able to see it, while typing)):</p>
+                <img src="img/putty_conn.png" />
+                <p><b>Important:</b> If you cannot connect immediately, you have to connect to your Pi with a monitor and mouse and keyboard. Login and open up the Terminal. Enter: <b>sudo raspi-config" and search for the option "ssh" and be sure it is active.</b></p>
+            </section>
+            <hr style="width: 100%">
+            <section id="hostname">
+                <h2>Change Hostname</h2>
+                <p>Since your Router has a DNS Server build in, you can change the IP Address of your Pi to a static name. It's pretty simple.</p>
+                <pre class="prettyprint linenums">
+sudo nano /etc/hosts</pre>
+                <p>The file will look something like this:</p>
+                <img src="img/pi_host.png" />
+                <p>You only need to change the last line: Replace "raspberrypi" with the name you want your Pi to be shown in the Network. Use <b>CTRL + X</b> to exit the editor.</p>
+                <p>After that, open the file hostname:</p>
+                <pre class="prettyprint linenums">
+sudo nano /etc/hostname</pre>
+                <p>Again, change "raspberrypi" to your desired name. It should be the same as in the <b>/etc/hosts</b> file.</p>
+                <p>Now, you are ready to restart the Pi. Commit the changes to the system by typing <b>sudo /etc/init.d/hostname.sh</b> and after that <b>sudo reboot</b> in your console.</p>
+                <p>Back online, you should see (and access) the Pi over the name, you just set. If it doesn't work, check on your Routers Interface if the name was applied.</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="stats">
+                <h2>Stats Page</h2>
+                <p>In the navigation bar of your Intranet you'll find the last point "Stats". On click, you'll be greeted by some graphs and a little bit text. All what you see here is <b>Advanced Information</b>!</p>
+                <p>The three graphs are pretty easy. The first one "cpu average" displays the cpu average. With that information you can see under what load your server is.</p>
+                <p>Free Ram explains himselft. It displays the free RAM.</p>
+                <p>The third one is a little bit tricky. Basicly PHP saves some memory for itself to run under perfect conditions. If this number is high (like over 50-60%) you should get a better server or check how other programms allocate RAM.</p>
+                <p><b>Important:</b> all these Graphs only work if your Host is a Linux Based deviece. These Functions won't work under Windows. We'll try to fix that later.</p>
+                <br>
+                <p>Now onto the text: first one just displays the version which your Intranet is running on. The second on is just a link to exactly this site. The third one displays the user you are currently logged in with.</p>
+                <p>Next on are information about the modules you have installed. The total amount and those who have an Interface file.</p>
+                <p>The last Paragraph simply shows the data from your config. Network Path, Modules Path, Language and if the REST API is enabled.</p>
+                <p>If you watched closely, you may have discovered the "Update" Button, but that will only appear if you Version is outdated. By clicking it'll automaticly will update. There is always a chance of data-loss. So make sure you save your modules and pictures.</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="modules">
+                <h2>Modules</h2>
+                <p>In our Project, it's all about the modules. The Barebone Intranet is only good for Usermanagment. That's why the modules are the important parts. Developed by us and the community, you can customize your Intranet perfectly to fit <b>your</b> needs. Installing modules is fairly easy. You have a Folder which you can access via <a href="#ftp">FTP</a>. The Folder is called <b>/Interface/modules</b>. In there, you drop your module. If the module you've downloaded has a "php" folder with an "interface_xxx.php", drop it in the existing "php" folder. Then you should be good to go. We planned to add an installer to make it even easier for you. Any file with "interface_xxx.php" have content that will be shown on your Dashboard. </p>
+
+            </section>
+            <hr style="width: 100%">
+            <section id="manualinstallation">
+                <h2>Manual Installation</h2>
+                <p>If you don't trust our script (you can check the source <a href="https://github.com/IntranetProject/intranet_page/blob/master/setup/script/script.sh">here</a>), you can run each step by yourself. To guide you through this process, we collected all commands here.</p>
+                <p>Start by updating and upgrading your Pi's software with the following two commands:</p>
+                <pre class="prettyprint linenums">
+apt-get update
+apt-get upgrade</pre>
+                <p>After that, you need to install the necessary software (apache2, php5 and mysql5). Run the following commands:</p>
+                <pre class="prettyprint linenums">
+apt-get install apache2 apache2-doc apache2-utils
+apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
+apt-get install php5-mysql
+apt-get install mysql-server mysql-client</pre>
+                <p>During the process you'll be asked to give a password. You need to remember it. Now, that everything is installed correctly we can continue by putting our main Intranet in the folder of the apache Webserver. Connect of <a href="#ftp">FTP</a> to your Pi and download the version you want from our <a href="https://github.com/IntranetProject/intranet_frontend/releases">GitHub Release Page</a>. Navigate to the <b>/var/www/</b> folder and delete the html folder. Unzip the downloaded package and rename the folder to "html". Now you can move it onto your Pi.</p>
+                <p>Also, it's very important that you remove the following files from git tracking, to do that, simply enter the following commands into your console:</p>
+                <pre class="prettyprint linenums">
+cd /var/www/html
+git init
+git update-index --assume-unchanged Interface/img/
+git update-index --assume-unchanged Interface/modules/
+git update-index --assume-unchanged php/config.php
+                </pre>
+                <p>This will keep your private data there, like profilepictures and the modules you installed.</p>
+            </section>
+            <hr style="width: 100%">
+            <section id="developers">
+                <h2>Developer:</h2>
+                <p>You want to develop your own module? No worries, we'll guide you through this.</p>
+                <p>But what requirements do you need? It's good if you have some PHP knowledge, but it's not required. You can go with a fully JavaScript module, but for Database connection, it's good to have some PHP knowledge.</p>
+                <p>Now let's have a look at the important part of the Template.php, which you can find in the "Interface/modules" folder. There are only 4 important lines, you should know about. Line 1,2,4 and line 102. In line 102 you paste your code. The structures around are mainly things as the navbar and imports. In line 1, you'll find this:</p>
+                <pre class="prettyprint linenums">
+session_start();
+include '../../php/config.php';
+                    
+// renew connection, because it is closed in the config.
+$link = new mysqli($__database_host, $__database_user, $__database_password, $__database);</pre>
+
+                <p>Notice, we're importing the config.php and starting a session to check if the user is logged in or not (if he has access or not). And we are renewing the connection to the Database with the parameters from the config.</p>
+                <p>Now that's basically all you need to know if you want to get started. But we'll give you some more information that could be helpful.</p>
+                <h4 id="variables">Variables:</h4>
+                <p>There is some useful information about the logged-in user in the session variables and normal PHP vars. Those should never be overwritten!</p>
+                <table>
+                    <tr>
+                        <th>Variable Name</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['rank']</td>
+                        <td>returns the rank of the user (user, admin)</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['loginname']</td>
+                        <td>returns the login name of the user, which is also the primary key in the database, so it cannot be duplicated!</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['name']</td>
+                        <td>returns the name of the user</td>
+                    </tr>
+                    <tr>
+                        <td>$_SESSION['img_url']</td>
+                        <td>returns the url where the profile img is located.</td>
+                    </tr>
+                    <tr>
+                        <th>Variable Name</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>$version</td>
+                        <td>returns the current version the Intranet is running on.</td>
+                    </tr>
+                    <tr>
+                        <td>$network_path</td>
+                        <td>returns the path where the Intranet is located, inclusive Network device.</td>
+                    </tr>
+                    <tr>
+                        <td>$language</td>
+                        <td>returns the language that is selected.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_host</td>
+                        <td>returns the host where the database is located.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_user</td>
+                        <td>returns the MySQL user.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database_password</td>
+                        <td>returns the MySQL password for the user.</td>
+                    </tr>
+                    <tr>
+                        <td>$__database</td>
+                        <td>returns the database which is selected.</td>
+                    </tr>
+                </table>
+                <h4 id="restapi">REST API</h4>
+                <p>The Intranet has a native REST API implemented. Here, you'll learn how to use it and how to filter information with native JavaScript.</p>
+                <p>The important file is in the /php/REST/index.php folder. If you want to send a GET request to get information about any user in the database, there are different ways to accomplish your goal. </p>
+                <table>
+                    <tr>
+                        <td><b>Title</b></td>
+                        <td>Show User Information</td>
+                    </tr>
+                    <tr>
+                        <td><b>URL</b></td>
+                        <td>/php/rest/?:id <b>or</b> /php/rest/?:name <b>or</b> /php/rest/?:all</td>
+                    </tr>
+                    <tr>
+                        <td><b>Method</b></td>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <td><b>URL Parameter</b></td>
+                        <td>id=[integer]<br>example: id=12<br><br>name=[string]<br>example: name=root<br><br>all=[null]<br>example: all=1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Success Response</b></td>
+                        <td>Code: 200<br><br>Content:
+                            <pre class="prettyprint linenums">{
+  "id": "1",
+  "login": "root",
+  "password": "63a9f0ea7bb98050796b649e85481845",
+  "name": "root",
+  "img_url": "img/root.png",
+  "rank": "admin"
+}</pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Error Response</b></td>
+                        <td>Code: 200<br><br>Content:
+                            <pre class="prettyprint linenums">"Error 404. User with id 2 not found!"</pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Sample Call</b></td>
+                        <td>Here is an example call with JavaScript and ajax to show you how to use it:<br><br>
+                            <pre class="prettyprint linenums">$.ajax({
+    url: "/php/rest/index.php",
+    data: {"all": "1"},
+    success: function(response) {
+        //Do Something
+    },
+    error: function(xhr) {
+        //Do Something to handle error
+    }
+});</pre>
+                        </td>
+
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+    <a href="#" class="go-top">Top</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="../js/download.js" type="text/javascript"></script>
+    <script src="../js/script.js" type="text/javascript"></script>
+    <script src="../js/scroll.js" type="text/javascript"></script>
+</body>
+
+</html>
