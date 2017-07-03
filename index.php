@@ -1,3 +1,8 @@
+<?php
+if (!(file_exists("up.txt"))) {
+    header("Location: http://maintenance.intranetproject.net?site=documentation");
+}
+?>
 <html>
 
 <head>
