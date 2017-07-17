@@ -12,6 +12,7 @@ if (!(file_exists("up.txt"))) {
 
     <body>
         <div class="container">
+            <div class="subcontainer">
             <h1>Docs</h1>
             <div class="release">
                 <h2>Release</h2>
@@ -33,6 +34,7 @@ if (!(file_exists("up.txt"))) {
                     <a href="v/0.0.19/index.html">v0.0.19</a>
                     <a href="v/0.0.12/index.html">v0.0.12</a>
                 </div>
+            </div>
             </div>
             <div class="footer">
                 <div class="git">
