@@ -6,48 +6,84 @@ if (!(file_exists("up.txt"))) {
     <html>
 
     <head>
-        <link type="text/css" rel="stylesheet" href="css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/reset.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection">
+      <link rel="stylesheet" href="css/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </head>
 
     <body>
+      <main>
         <div class="container">
-            <div class="subcontainer">
-            <h1>Docs</h1>
-            <div class="release">
-                <h2>Release</h2>
-                <div class="boxr">
-                    <!--<a href="#">v1.0.0</a>-->
+            <h1 class="center-align">Docs</h1>
+            <div class="row">
+              <div class="col s10 offset-s1">
+                <div class="card teal lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Release</span>
+                    <p>These are the last couple released versions.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">N/A</a>
+                  </div>
                 </div>
-            </div>
-            <div class="beta">
-                <h2>Beta</h2>
-                <div class="boxb">
-                    <!--<a href="#">v0.1.0</a>-->
+              </div>
+              <div class="col s10 offset-s1">
+                <div class="card teal lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Beta</span>
+                    <p>These are the last couple beta versions.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">N/A</a>
+                  </div>
                 </div>
-            </div>
-            <div class="alpha">
-                <h2>Alpha</h2>
-                <div class="boxa">
+              </div>
+              <div class="col s10 offset-s1">
+                <div class="card teal lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Alpha</span>
+                    <p>These are the last couple alpha versions.</p>
+                  </div>
+                  <div class="card-action">
                     <a href="v/0.0.21/index.html">v0.0.21</a>
                     <a href="v/0.0.20/index.html">v0.0.20</a>
                     <a href="v/0.0.19/index.html">v0.0.19</a>
                     <a href="v/0.0.12/index.html">v0.0.12</a>
+                  </div>
                 </div>
-            </div>
-            </div>
-            <div class="footer">
-                <div class="git">
-                    <p><a href="https://github.com/IntranetProject">GitHub</a></p>
-                </div>
-                <div class="imp">
-                    <p><a href="imprint.html">Impressum</a></p>
-                </div>
-                <div class="credit">
-                    <p><b><i style="color: black;">&lt; &gt;</i></b> with <i style="color: red;">&hearts;</i> by <a href="https://github.com/IntranetProject">Intranet</a></p>
-                </div>
+              </div>
             </div>
         </div>
+      </main>
+        <footer class="page-footer teal lighten-2">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Questions?</h5>
+                <p class="grey-text text-lighten-4">Contact: <a href="mailto:support@intranetproject.net" style="color:white; text-decoration:underline;">support@intranetproject.net</a></p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/IntranetProjec">GitHub</a></li>
+                  <li><a class="grey-text text-lighten-3" href="imprint.html">Imprint</a></li>
+                  <li>
+                    <p class="grey-text text-lighten-3" href="#!">&lt; &gt;</i>
+                      </b> with <i style="color: red;">&hearts;</i> by <a class="grey-text text-lighten-3" href="https://github.com/IntranetProject">Intranet</a></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+              © 2017 Intranet Project
+            </div>
+          </div>
+        </footer>
     </body>
 
     </html>
