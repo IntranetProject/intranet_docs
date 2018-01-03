@@ -62,8 +62,18 @@ if (!(file_exists("up.txt"))) {
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Questions?</h5>
-                <p class="grey-text text-lighten-4">Contact: <a href="mailto:support@intranetproject.net" style="color:white; text-decoration:underline;">support@intranetproject.net</a></p>
+                <h5 class="white-text">Links to all other pages:</h5>
+                    <ul style="list-style-type: none">
+                        <li><a href="http://intranetproject.net" class="white-text">Main Page</a></li>
+                        <li><a href="http://download.intranetproject.net" class="white-text">Downloads</a></li>
+                        <li><a href="http://status.intranetproject.net" class="white-text">Status</a></li>
+                        <li><a href="http://shop.intranetproject.net" class="white-text">Shop</a></li>
+                        <li><a href="http://account.intranetproject.net" class="white-text">Account</a></li>
+                        <li><a href="http://packages.intranetproject.net" class="white-text">Packages</a></li>
+                        <li><a href="http://blog.intranetproject.net" class="white-text">Blog</a></li>
+                        <li><a href="http://api.intranetproject.net" class="white-text">API</a></li>
+                        <li><a href="http://docs.api.intranetproject.net" class="white-text">API-Docs</a></li>
+                    </ul>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
