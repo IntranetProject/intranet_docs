@@ -27,7 +27,7 @@ if (!(file_exists("up.txt"))) {
                 <h1 class="center-align">Docs</h1>
                 <div class="row">
                     <div class="col s10 offset-s1">
-                        <div class="card teal lighten-1">
+                        <div class="card blue darken-1">
                             <div class="card-content white-text">
                                 <span class="card-title">Release</span>
                                 <p>These are the last couple released versions.</p>
@@ -38,7 +38,7 @@ if (!(file_exists("up.txt"))) {
                         </div>
                     </div>
                     <div class="col s10 offset-s1">
-                        <div class="card teal lighten-1">
+                        <div class="card blue darken-1">
                             <div class="card-content white-text">
                                 <span class="card-title">Beta</span>
                                 <p>These are the last couple beta versions.</p>
@@ -49,7 +49,7 @@ if (!(file_exists("up.txt"))) {
                         </div>
                     </div>
                     <div class="col s10 offset-s1">
-                        <div class="card teal lighten-1">
+                        <div class="card blue darken-1">
                             <div class="card-content white-text">
                                 <span class="card-title">Alpha</span>
                                 <p>These are the last couple alpha versions.</p>
@@ -65,7 +65,7 @@ if (!(file_exists("up.txt"))) {
                 </div>
             </div>
         </main>
-        <footer class="page-footer teal lighten-2">
+        <footer class="page-footer blue">
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
